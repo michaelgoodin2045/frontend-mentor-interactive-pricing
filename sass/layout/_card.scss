@@ -1,0 +1,264 @@
+@use '../base' as *;
+@use '../utilities' as u;
+
+.card {
+    width: 326px;
+    height: 475px;
+    position: relative;
+    top: -165px;
+    margin: 0 auto;
+    background: $clr--white;
+    border-radius: 8px;
+    box-shadow: 2px 20px 20px 2px #efefef;
+    @include u.breakpoint(desktop) {
+        width: 555px;
+        height: 405px;
+        top: -180px;
+    }
+    & .card-box {
+        width: 100%;
+        height: 475px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: $clr--gray-blue;
+        @include u.breakpoint(desktop) {
+            height: 395px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+        }
+        & .pageviews {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: .8rem;
+            letter-spacing: 1.5px;
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+            @include u.breakpoint(desktop) {
+                order: 1;
+                font-size: .9rem;
+                letter-spacing: 3px;
+                padding-top: .7rem;
+                padding-left: 3rem;
+            }
+        }
+    }
+}
+
+.slider {
+    @include u.breakpoint(desktop) {
+        order: 3;
+        padding-top: 1.5rem;
+        padding-bottom: 1.8rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+#price-slider {
+    &, &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        
+    }
+    margin: 0;
+    width: 276px;
+    cursor: pointer;
+    @include u.breakpoint(desktop) {
+        width: 460px;
+    }
+    
+
+    &::-webkit-slider-runnable-track {
+        @include u.track()
+    }
+    &::-moz-range-track {
+        @include u.track()
+    }
+    &::-ms-track {
+        @include u.track()
+    }
+    &::-webkit-slider-thumb {
+        @include u.thumb
+    }
+    &::-moz-range-thumb {
+        @include u.thumb()
+    }
+    &::-ms-thumb {
+        @include u.thumb ()
+    }
+    &::-ms-tooltip {
+        display: none;
+    }
+}
+
+.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    @include u.breakpoint(desktop) {
+        order: 2;
+        padding-right: 3rem;
+    }
+    & .dollar-sign,
+    #dollars {
+        font-size: 2rem;
+        color: $clr--dark-desat-blue;
+        font-weight: 800;
+        @include u.breakpoint(desktop) {
+            font-size: 2.5rem;
+        }
+    }
+    & #dollars {
+        padding-right: 10px;
+    }
+    & .month {
+    font-size: .85rem;
+    font-weight: 600;
+    @include u.breakpoint(desktop) {
+        font-size: 1rem;
+    }
+    }
+}
+
+.billing {
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: .75rem;
+    font-weight: 600;
+    @include u.breakpoint(desktop) {
+        order: 4;
+        margin-left: 74px;
+        font-size: .80rem;
+        justify-content: space-between;
+        padding-left: 5rem;
+        padding-right: 4rem;
+    }
+    & .discount-no {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 18px;
+        border-radius: 18px;
+        background-color: $clr--light-gray-red;
+        color: $clr--light-red;
+        font-size: .65rem;
+        font-weight: 800;
+        @include u.breakpoint(desktop) {
+            width: 82px;
+            align-items: flex-start;
+            padding-left: 5px;
+        }
+        &::after {
+            @include u.breakpoint(desktop) {
+                position: absolute;
+                content: 'discount';
+                padding-left: 25px;
+            }
+        }
+        }
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0,
+}
+
+.round-toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 22px;
+    background-color: $clr--light-gray-blue-toggle;
+    transition: 400ms;
+    &::before {
+        position: absolute;
+        content: '';
+        height: 14px;
+        width: 14px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: $clr--white;
+        transition: 400ms;
+    }
+}
+
+input:checked + .round-toggle {
+    background-color: $clr--soft-cyan;
+    &::before {
+        transform: translateX(18px)
+    }
+}
+
+input:focus + .round-toggle {
+    box-shadow: 0 0 1px $clr--soft-cyan;
+}
+
+.divide {
+    width: 100%;
+    height: 1px;
+    margin-top: 1rem;
+    background-color: #efefef;
+    @include u.breakpoint(desktop) {
+        order: 5;
+    }
+}
+
+.bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include u.breakpoint(desktop) {
+        order: 6;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: -10px;
+    }
+    & .checks {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: .75rem;
+        font-weight: 600;
+        letter-spacing: .25px;
+        line-height: 2.2;
+        padding-bottom: 2rem;
+        color: $clr--gray-blue;
+        @include u.breakpoint(desktop) {
+            align-items: flex-start;
+            padding-top: 5px;
+            padding-bottom: 0;
+        }
+        & .checkmark {
+            margin-right: 1rem;
+        }
+    }
+}
